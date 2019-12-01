@@ -1,0 +1,36 @@
+{
+	"first": 1,
+	"second": 2,
+	"other_json": {
+		"three": 3,
+		"four": 4
+	},
+	"ten": 10
+}
+
+{
+	"note": "note",
+	"nested": {
+		"one": 1,
+		"two": 2,
+		"another_nested": {
+			"three": 3,
+			"and_another_one": {
+				"four": 4,
+			}
+		}
+	}
+	"outside_nested": {
+		"one": 1,
+	}
+}
+
+{
+	"first": 1,
+	"second": 2,
+	"other_json": {
+		"three": 3,
+		"four": 4
+	},
+	"ten": 10
+}

@@ -1,0 +1,9 @@
+{
+	"first": 1,
+	"second": 2,
+	"other_json": {
+		"three": 3,
+		"four": 4
+	},
+	"ten": 10
+}
