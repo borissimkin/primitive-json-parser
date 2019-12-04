@@ -13,7 +13,7 @@ JSONParser::~JSONParser()
 }
 
 
-void JSONParser::parsing(std::string filepath)
+void JSONParser::parse(std::string filepath)
 {
 	std::ifstream file(filepath);
 	if (!file)
@@ -33,14 +33,14 @@ void JSONParser::printAllJSON()
 	for (int i = 0; i < this->jsons.size(); i++)
 	{
 		std::cout << "{\n";
-		this->printJSON(jsons[i]);
+		this->printJSON(jsons[i], 1);
 		std::cout << "}\n";
 	}
 
 }
 
 
-void JSONParser::printJSON(JSONObject * json)
+void JSONParser::printJSON(JSONObject * json, int depth)
 {
 	if (json == nullptr)
 	{
@@ -48,14 +48,25 @@ void JSONParser::printJSON(JSONObject * json)
 	}
 	for (int i = 0; i < json->notes.size(); i++)
 	{
-		std::cout << json->notes[i].first << ":" << json->notes[i].second << "\n";
+		std::cout << this->getTabs(depth) << json->notes[i].first << ":" << json->notes[i].second << "\n";
 	}
 	for (int i = 0; i < json->childs.size(); i++)
 	{
-		std::cout << json->childs[i].first << ": {\n";
-		this->printJSON(json->childs[i].second);
-		std::cout << "}\n";
+		std::cout << this->getTabs(depth) << json->childs[i].first << ": {\n";
+		this->printJSON(json->childs[i].second, depth + 1);
+		std::cout << this->getTabs(depth) << "}\n";
 	}
+}
+
+std::string JSONParser::getTabs(int countTabs)
+{
+	std::string tabs;
+	for (int i = 0; i < countTabs; i++)
+	{
+		tabs += '\t';
+	}
+
+	return tabs;
 }
 
 void JSONParser::parsingLine(std::string line)

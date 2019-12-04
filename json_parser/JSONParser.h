@@ -14,7 +14,7 @@ class JSONParser
 public:
 	JSONParser();
 	~JSONParser();
-	void parsing(std::string filepath);
+	void parse(std::string filepath);
 	void printAllJSON();
 	
 
@@ -22,7 +22,8 @@ private:
 	JSONObject *currentJSONObject;
 	std::vector<JSONObject*> jsons;
 
-	void printJSON(JSONObject* json);
+	void printJSON(JSONObject* json, int  depth = 0);
+	std::string getTabs(int countTabs);
 
 	void parsingLine(std::string line);
 	
